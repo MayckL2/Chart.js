@@ -5,6 +5,9 @@ import { Bar, Line, Pie, Doughnut, PolarArea, Radar, Scatter, Bubble } from "rea
 import { CategoryScale } from 'chart.js';
 Chart.register(CategoryScale);
 import { ErrorBoundary } from './components/erroBoudary';
+import votar from './services/votar';
+import Resultado from './components/resultado';
+import Enquete from './components/enquete';
 
 function App() {
   const [data, setData] = useState({
@@ -15,22 +18,23 @@ function App() {
       borderWidth: 4
     }]
   })
-
-  // const ctx: any = document.querySelector("#ctx")
-  // const chart = new Chart(ctx, {
-  //   type: 'bar',
-  //   data: {
-  //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  //     datasets: [{
-  //       label: '# of Votes',
-  //       data: [12, 19, 3, 5, 2, 3],
-  //       borderWidth: 1
-  //     }]
-  //   },
-  // });
+  const [page, setPage] = useState(false)
+  const [check, setCheck] = useState(null)
 
   return (
     <main>
+
+      <div style={{display: 'flex'}}>
+        {page ?
+          <Resultado voltar={() => setPage(false)} />
+          :
+          <Enquete
+            change={(e: any) => setCheck(e.target.value)}
+            votar={() => setPage(votar(check))}
+          />
+        }
+      </div>
+
       <h1>Graficos react-chartjs-2</h1>
       {/* <BarChart data={data}/> */}
       <ErrorBoundary fallback={<p>Something went wrong</p>}>
