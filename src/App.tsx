@@ -8,6 +8,7 @@ import { ErrorBoundary } from './components/erroBoudary';
 import votar from './services/votar';
 import Resultado from './components/resultado';
 import Enquete from './components/enquete';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [data, setData] = useState({
@@ -23,7 +24,8 @@ function App() {
 
   return (
     <main>
-
+      <Link to='/newEnquete'>New Enquete</Link><br></br>
+      <Link to='/showEnquete'>Show Enquete</Link>
       <div style={{display: 'flex'}}>
         {page ?
           <Resultado voltar={() => setPage(false)} />

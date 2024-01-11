@@ -14,8 +14,8 @@ export default function votar(e: string | null) {
     } else {
       obj = [
         { name: 'final fantasy', votos: e == 'final fantasy' ? 1 : 0 },
-        { name: 'skyrim', votos: e == 'skyrim' ? 1 : 0 },
-        { name: 'fire emblem', votos: e == 'fire emblem' ? 1 : 0 }
+        { name: 'skyrim', votos: e == 'Skyrim' ? 1 : 0 },
+        { name: 'fire emblem', votos: e == 'Fire emblem' ? 1 : 0 }
       ]
       localStorage.setItem('data', JSON.stringify(obj))
     }
